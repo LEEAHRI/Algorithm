@@ -5,4 +5,3 @@ def solution(p, c):
         if p[i] != c[i]:
             return p[i]
     return p[-1]
-##
