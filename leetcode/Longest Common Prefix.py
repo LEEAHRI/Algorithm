@@ -1,7 +1,8 @@
 from typing import *
 
 
-strs = ["flower", "flow", "flight"]
+strs = ["dog","racecar","car"]
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
 
@@ -10,8 +11,8 @@ class Solution:
         if len(strs) == 0:
             return ""
         else:
-            for i in range(1,len(strs[0])):
-                for j in range(1, len(strs)):
+            for i in range(len(strs[0])):
+                for j in range(len(strs)):
                     if strs[0][i] != strs[j][i]:
                         return strs[0][:i] #단어가 틀려지기 전까지 반환
             return strs[0]

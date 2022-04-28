@@ -1,3 +1,5 @@
+# 이문제 꼭 다시 풀어보기 !!
+
 class Solution:
     def longestPalindrome(self, s: str) -> str:
         def expand(left, right):
