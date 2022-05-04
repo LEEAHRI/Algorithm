@@ -3,6 +3,7 @@ gems = ["DIA", "RUBY", "RUBY", "DIA", "DIA", "EMERALD", "SAPPHIRE", "DIA"]
 from collections import defaultdict
 
 #투포인터 알고리즘 공부하기
+#다시풀기
 def solution(gems):
     answer = [0, 0]
     candidates = []
