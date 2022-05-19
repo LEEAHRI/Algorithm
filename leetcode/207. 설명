@@ -1,0 +1,72 @@
+Solution:
+The basic idea behind solving this problem is to treat every number as a vertex in the graph and see if there is a
+cycle in the graph. This can be done using topological sort. Topological sort of a graph returns the sequence of vertices
+in a way where all the parent nodes are always traversed before their children. There can be multiple solutions of
+Topological Sort.
+
+All Vertices have 3 states:
+    0 not visited
+    -1 being visited (not finished exploring the children)
+    1 visited (finished exploring all the children and the node itself)
+
+Example 1:
+    Input:
+    [[0,1], [1,2]]
+    This can be represented in a graph as
+
+     0 ----> 1 ----> 2
+    [0]     [0]     [0]
+    Let us start exploring from vertex 0
+
+     0 ----> 1 ----> 2
+    [-1]    [0]     [0]
+    Now 0 is being visited and we will look for its children and see if they are already visited(1).
+    1 is child of 0 which is not visited(0). Thus, we will visit 1 next.
+
+     0 ----> 1 ----> 2
+    [-1]    [-1]    [0]
+    Now 1 is being visited and we will look for its children and see if they are already visited(1).
+    2 is child of 1 which is not visited. Thus, we will visit 2 next.
+
+     0 ----> 1 ----> 2
+    [-1]   [-1]    [-1]
+    Now 2 is being visited and we will look for its children.
+    2 does not have any children so we do not need to look any further.
+    Thus we can mark 2 as visited(1).
+
+     0 ----> 1 ----> 2
+    [-1]   [-1]     [1]
+
+    Now we go back to vertex 1 which is still being visited(-1).
+    We look for its children and see if they are already visited(1).
+    2 (the only child of 1 is already visited). Thus no need to look further.
+    Thus we can mark 1 as visited(1).
+
+     0 ----> 1 ----> 2
+    [-1]    [1]     [1]
+
+    Now we go back to vertex 0 which is still being visited(-1).
+    We look for its children and see if they are already visited(1).
+    1 (the only child of 0 is already visited). Thus no need to look further.
+    Thus we can mark 0 as visited(1).
+
+     0 ----> 1 ----> 2
+    [1]     [1]     [1]
+
+    Once all vertices are visited, we can return True
+
+Example 2:
+    Input:
+    [[0,1], [1,0]]
+    This can be represented in a graph as
+
+       ---->
+  [0] 0      1 [0]
+       <----
+    Let us start exploring from vertex 0
+
+       ---->
+ [-1] 0      1 [0]
+       <----
+    Now 0 is being visited and we will look for its children and see if they are already visited(1).
+    1 is child of 0 which is not visited(0). Thus, we will visit 1 next.
